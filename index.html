@@ -8,5 +8,24 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <form>
+      <h1>Weather in Your Location</h1>
+      <fieldset>
+        <label for="location-text">Location:</label>
+        <input type="text" name="location-text" id="location-text" value="" />
+      </fieldset>
+      <button type="submit" id="submit-form-btn">Get Data</button>
+    </form>
+    <section>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Data</th>
+          </tr>
+        </thead>
+        <tbody id="output-container"></tbody>
+      </table>
+    </section>
+  </body>
 </html>
