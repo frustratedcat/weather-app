@@ -6,6 +6,7 @@ async function getWeather(location) {
       `https://api.weatherapi.com/v1/current.json?key=da59594fa69049739a5180255242601&q=${location}`,
     );
     response.json().then(function (response) {
+      response.current.condition = response.current.condition.text;
       const outputContainer = document.getElementById("output-container");
 
       while (outputContainer.childElementCount > 0) {
@@ -14,15 +15,6 @@ async function getWeather(location) {
 
       for (const [key, value] of Object.entries(response)) {
         for (const [innerKey, innerValue] of Object.entries(value)) {
-          if (innerKey === "condition") {
-            for (const [conditionKey, conditionValue] of Object.entries(
-              innerValue,
-            )) {
-              if (conditionKey === "text") {
-                console.log(conditionValue);
-              }
-            }
-          }
           outputContainer.append(createTableRows(innerKey, innerValue));
         }
       }
@@ -64,7 +56,6 @@ function createTableData(text) {
 function cleanUpData() {
   const outputContainer = document.getElementById("output-container");
   let outputContainerChildren = outputContainer.children;
-  console.log(outputContainerChildren.length);
   for (let i = 0; i < outputContainerChildren.length; i++) {
     if (outputContainerChildren[i].firstChild.textContent === "name") {
       outputContainerChildren[i].firstChild.textContent = "Name";
