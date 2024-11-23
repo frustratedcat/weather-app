@@ -1,5 +1,4 @@
 import os
-import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -30,10 +29,17 @@ def search_user_location():
 
 # Current weather result
 def weather_result():
+    current_date = get_element(20, By.XPATH, '//div[contains(@class, "card-header")]/p')
+    current_time = get_element(20, By.XPATH, '//p[contains(@class, "cur-con-weather-card__subtitle")]')
+    print(current_date.text, current_time.text)
+
     today_forecast = get_element(20, By.XPATH, '//div[contains(@class, "body-item")][1]')
     tonight_forecast = get_element(20, By.XPATH, '//div[contains(@class, "body-item")][2]')
-    print(f'Today\'s Forecast: {today_forecast.text}\nTonight\'s Forecast: {tonight_forecast.text}')
+    print(f'\nToday\'s Forecast: {today_forecast.text}\nTonight\'s Forecast: {tonight_forecast.text}')
 
+    current_temp = get_element(20, By.XPATH, '//div[contains(@class, "temp-container")]/div[1]')
+    real_feel = get_element(20, By.XPATH, '//div[contains(@class, "temp-container")]/div[2]')
+    print(f'\nCurrent Temperature: {current_temp.text} {real_feel.text}')
 
 
 def main():
