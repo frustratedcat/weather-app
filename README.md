@@ -1,1 +1,1 @@
-# weather-app
+A weather application using python and selenium.
