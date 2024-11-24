@@ -12,7 +12,7 @@ To install the application:
     - `source <dir-name>/bin/activate`
     - Ex. `source py310/bin/activate`
 5. At this point, you need to install the requirements from the requirements.txt file with the following: 
-    - `pip freeze -r requirements.txt`
+    - `pip install -r requirements.txt`
 6. You should now be able to run the application without any problems.
 
 To deactivate the virtual environment, simply type `deactivate` in your terminal.
