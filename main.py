@@ -35,6 +35,9 @@ def search_user_location():
 
 # Current weather result
 def weather_result():
+    location =  get_element(5, By.CLASS_NAME, 'header-loc')
+    print(location.text)
+
     current_date = get_element(5, By.XPATH, '//div[contains(@class, "card-header")]/p')
     current_time = get_element(5, By.XPATH, '//p[contains(@class, "cur-con-weather-card__subtitle")]')
     print(current_date.text, current_time.text)
