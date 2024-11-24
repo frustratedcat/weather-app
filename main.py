@@ -99,6 +99,7 @@ def weather_result():
 
 # List weather results
 def list_results():
+    print('Location Results:')
     for i in range(1, 11):
         result = get_element(5, By.XPATH, '//div[contains(@class, "locations-list")]/a[' +  str(i) + ']/p[2]')
         print(i, result.text)
