@@ -16,6 +16,9 @@ options.page_load_strategy = 'eager'
 driver = webdriver.Firefox(options=options)
 driver.get('https://www.accuweather.com/')
 
+# Add uBlock Origin addon
+driver.install_addon('uBlock0_1.61.3b0.firefox.signed.xpi')
+
 # Get HTML elements
 def get_element(time, type, name):
     driver.implicitly_wait(time)
@@ -44,15 +47,25 @@ def weather_result():
     real_feel = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[2]')
     print(f'\nCurrent Temperature: {current_temp.text} {real_feel.text}')
 
+# List weather results
+def list_results():
+    for i in range(1, 11):
+        result = get_element(5, By.XPATH, '//div[contains(@class, "locations-list")]/a[' +  str(i) + ']/p[2]')
+        print(i, result.text)
+    choose_item = input('\nPlease choose an item by typing 1 - 10:\n> ')
+    get_element(5, By.XPATH, '//div[contains(@class, "locations-list")]/a[' + str(choose_item) + ']/p[2]').click()
+          
 def main():
     try:
         clear_screen()
         search_user_location()
         clear_screen()
-        weather_result()
-    except:
-        clear_screen()
-        print('You mistyped, run the application again...')
+        if driver.find_elements(By.CLASS_NAME, 'locations-list'):
+            list_results()
+            clear_screen()
+            weather_result()
+        else:
+            weather_result()
     finally:
         driver.close()
 
