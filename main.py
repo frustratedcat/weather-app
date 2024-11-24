@@ -26,7 +26,7 @@ def get_element(time, type, name):
 
 # Get location for search
 def get_user_location():
-    location = input('Type your full address here:\n> ')
+    location = input('Type your address here:\n> ')
     return location.strip()
 
 # Search location and return list of locations or result
@@ -95,7 +95,7 @@ def weather_result():
     mold = get_element(5, By.XPATH, '//a[contains(@class, "health-activities__item")][3]/span[2]')
     grass_pollen = get_element(5, By.XPATH, '//a[contains(@class, "health-activities__item")][4]/span[2]')
     dust_dander = get_element(5, By.XPATH, '//a[contains(@class, "health-activities__item")][5]/span[2]')
-    print(f'Tree Pollen: {tree_pollen.text}\nRagweed Pollen: {ragweed_pollen.text}\nMold: {mold.text}\nGrass Pollen: {grass_pollen.text}\nDust & Dander: {dust_dander.text}')
+    print(f'Tree Pollen: {tree_pollen.text}\nRagweed Pollen: {ragweed_pollen.text}\nMold: {mold.text}\nGrass Pollen: {grass_pollen.text}\nDust & Dander: {dust_dander.text}\n')
 
 # List weather results
 def list_results():
