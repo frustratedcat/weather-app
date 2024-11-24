@@ -118,7 +118,7 @@ def main():
         else:
             weather_result()
     except:
-        print(f'\nThat is not in the range... Run the program again')
+        print('\nAn error has occurred... Run the program again')
     finally:
         driver.close()
 
