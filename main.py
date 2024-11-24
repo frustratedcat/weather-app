@@ -36,19 +36,24 @@ def search_user_location():
 # Current weather result
 def weather_result():
     location =  get_element(5, By.CLASS_NAME, 'header-loc')
-    print(location.text)
-
     current_date = get_element(5, By.XPATH, '//div[contains(@class, "card-header")]/p')
     current_time = get_element(5, By.XPATH, '//p[contains(@class, "cur-con-weather-card__subtitle")]')
-    print(current_date.text, current_time.text)
+    print(f'{location.text} | {current_date.text} | {current_time.text}')
 
     today_forecast = get_element(5, By.XPATH, '//div[contains(@class, "body-item")][1]')
     tonight_forecast = get_element(5, By.XPATH, '//div[contains(@class, "body-item")][2]')
     print(f'\nToday\'s Forecast: {today_forecast.text}\nTonight\'s Forecast: {tonight_forecast.text}')
 
     current_temp = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[1]')
-    real_feel = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[2]')
-    print(f'\nCurrent Temperature: {current_temp.text} {real_feel.text}')
+    real_feel = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[1]/span[2]')
+    print(f'\nCurrent Temperature: {current_temp.text}\nReal Feel: {real_feel.text}F')
+
+    wind = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[2]/span[2]')
+    wind_gusts = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[3]/span[2]')
+    print(f'Wind: {wind.text}\nWind Gusts: {wind_gusts.text}')
+
+    air_quality = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[4]/span[2]')
+    print(f'Air Quality: {air_quality.text}')
 
 # List weather results
 def list_results():
