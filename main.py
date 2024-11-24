@@ -35,25 +35,44 @@ def search_user_location():
 
 # Current weather result
 def weather_result():
+    # Print locaiton, date, time
     location =  get_element(5, By.CLASS_NAME, 'header-loc')
     current_date = get_element(5, By.XPATH, '//div[contains(@class, "card-header")]/p')
     current_time = get_element(5, By.XPATH, '//p[contains(@class, "cur-con-weather-card__subtitle")]')
     print(f'{location.text} | {current_date.text} | {current_time.text}')
 
+    # Print today and tonight forecast
     today_forecast = get_element(5, By.XPATH, '//div[contains(@class, "body-item")][1]')
     tonight_forecast = get_element(5, By.XPATH, '//div[contains(@class, "body-item")][2]')
     print(f'\nToday\'s Forecast: {today_forecast.text}\nTonight\'s Forecast: {tonight_forecast.text}')
 
+    # Print current temp and real feel
     current_temp = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[1]')
     real_feel = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[1]/span[2]')
     print(f'\nCurrent Temperature: {current_temp.text}\nReal Feel: {real_feel.text}F')
 
+    # Print wind and wind gusts
     wind = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[2]/span[2]')
     wind_gusts = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[3]/span[2]')
     print(f'Wind: {wind.text}\nWind Gusts: {wind_gusts.text}')
 
+    # Print air quality
     air_quality = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[4]/span[2]')
     print(f'Air Quality: {air_quality.text}')
+
+    # Print hourly for the next 6 hours
+    print('\nNext 6 Hours')
+    for i in range(1, 7):
+        hourly_list_time = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[1]')
+        hourly_list_temp = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[2]')
+        hourly_list_precip = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/div/span')
+        print(f'{hourly_list_time.text} | Temperature: {hourly_list_temp.text}F | Precipitation: {hourly_list_precip.text}')
+
+    # Print 10-day
+
+    # Print sun and moon info
+
+    # Print allergy outlook
 
 # List weather results
 def list_results():
@@ -74,8 +93,8 @@ def main():
             weather_result()
         else:
             weather_result()
-    except:
-        print(f'\nThat is not in the range... Run the program again')
+    # except:
+    #     print(f'\nThat is not in the range... Run the program again')
     finally:
         driver.close()
 
