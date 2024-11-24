@@ -80,8 +80,13 @@ def weather_result():
         _10_day_precip = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[4]')
         print(f'{_10_day_day_of_week.text} - {_10_day_date.text} | High: {_10_day_high.text} | Low: {_10_day_low.text} | Day\'s Outlook: {_10_day_outlook_day.text} | Night\'s Outlook: {_10_day_outlook_night.text} | Precipitation: {_10_day_precip.text}')
 
-
     # Print sun and moon info
+    print(f'\nSun and Moon')
+    sunrise = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][1]/div/div[1]/span[2]')
+    sunset = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][1]/div/div[2]/span[2]')
+    moonrise = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][2]/div/div[1]/span[2]')
+    moonset = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][2]/div/div[2]/span[2]')
+    print(f'Sunrise: {sunrise.text} | Sunset: {sunset.text}\nMoonrise: {moonrise.text} | Moonset: {moonset.text}')
 
     # Print allergy outlook
 
