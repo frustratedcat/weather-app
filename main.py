@@ -49,7 +49,7 @@ def weather_result():
     # Print current temp and real feel
     current_temp = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[1]')
     real_feel = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[1]/span[2]')
-    print(f'\nCurrent Temperature: {current_temp.text}\nReal Feel: {real_feel.text}F')
+    print(f'\nCurrent Temperature: {current_temp.text}\nReal Feel: {real_feel.text}')
 
     # Print wind and wind gusts
     wind = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[2]/span[2]')
@@ -66,7 +66,7 @@ def weather_result():
         hourly_list_time = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[1]')
         hourly_list_temp = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[2]')
         hourly_list_precip = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/div/span')
-        print(f'{hourly_list_time.text} | Temperature: {hourly_list_temp.text}F | Precipitation: {hourly_list_precip.text}')
+        print(f'{hourly_list_time.text} | Temperature: {hourly_list_temp.text} | Precipitation: {hourly_list_precip.text}')
 
     # Print 10-day
     print('\n10-Day Forecast')
