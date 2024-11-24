@@ -17,5 +17,5 @@ To install the application:
 
 To deactivate the virtual environment, simply type `deactivate` in your terminal.
 
-If an error occurs, please check that your version of Firefox supports the version of uBlock Origin used here and download the correct uBlock .xpi file from [Raymond Hill's Github](https://github.com/gorhill/uBlock/releases).
+If an error occurs, please check that your version of Firefox supports the version of uBlock Origin used here or download the correct uBlock .xpi file from [Raymond Hill's Github](https://github.com/gorhill/uBlock/releases).
 The purpose of using uBlock Origin is to remove content blocking objects that may occur in the AccuWeather DOM. 
