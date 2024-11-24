@@ -100,7 +100,8 @@ def weather_result():
 # List weather results
 def list_results():
     print('Location Results:')
-    for i in range(1, 11):
+    result_len = driver.find_elements(By.XPATH, '//div[contains(@class, "locations-list")]/a')
+    for i in range(1, len(result_len) + 1):
         result = get_element(5, By.XPATH, '//div[contains(@class, "locations-list")]/a[' +  str(i) + ']/p[2]')
         print(i, result.text)
     choose_item = input('\nPlease choose an item by typing 1 - 10:\n> ')
