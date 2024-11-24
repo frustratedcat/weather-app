@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -48,17 +49,36 @@ def weather_result():
 
     # Print current temp and real feel
     current_temp = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[1]')
-    real_feel = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[1]/span[2]')
-    print(f'\nCurrent Temperature: {current_temp.text}\nReal Feel: {real_feel.text}')
+    print(f'\nCurrent Temperature: {current_temp.text}')
+    
+    # Check time
+    now = datetime.now()
+    sunset = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][1]/div/div[2]/span[2]')
+    sunset_time = datetime.strptime(str(sunset.text), '%I:%M %p')
 
-    # Print wind and wind gusts
-    wind = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[2]/span[2]')
-    wind_gusts = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[3]/span[2]')
-    print(f'Wind: {wind.text}\nWind Gusts: {wind_gusts.text}')
+    # Compare and return result
+    if (now.hour + now.minute / 60) < (sunset_time.hour + sunset_time.minute / 60):
+        # Real feel
+        real_feel = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[1]/span[2]')
+        print(f'\nReal Feel: {real_feel.text}')
 
-    # Print air quality
-    air_quality = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[4]/span[2]')
-    print(f'Air Quality: {air_quality.text}')
+        # Print wind and wind gusts
+        wind = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[2]/span[2]')
+        wind_gusts = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[3]/span[2]')
+        print(f'Wind: {wind.text}\nWind Gusts: {wind_gusts.text}')
+
+        # Print air quality
+        air_quality = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[4]/span[2]')
+        print(f'Air Quality: {air_quality.text}')
+    else:
+        # Print wind and wind gusts
+        wind = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[1]/span[2]')
+        wind_gusts = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[2]/span[2]')
+        print(f'Wind: {wind.text}\nWind Gusts: {wind_gusts.text}')
+
+        # Print air quality
+        air_quality = get_element(5, By.XPATH, '//div[contains(@class, "cur-con-weather-card__panel")][2]/div[3]/span[2]')
+        print(f'Air Quality: {air_quality.text}')
 
     # Print hourly for the next 6 hours
     print('\nNext 6 Hours')
