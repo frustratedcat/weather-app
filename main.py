@@ -45,7 +45,7 @@ def weather_result():
     # Print today and tonight forecast
     today_forecast = get_element(5, By.XPATH, '//div[contains(@class, "body-item")][1]')
     tonight_forecast = get_element(5, By.XPATH, '//div[contains(@class, "body-item")][2]')
-    print(f'\nToday\'s Forecast: {today_forecast.text}\nTonight\'s Forecast: {tonight_forecast.text}')
+    print(f'\n{today_forecast.text}\n{tonight_forecast.text}')
 
     # Print current temp and real feel
     current_temp = get_element(5, By.XPATH, '//div[contains(@class, "temp-container")]/div[1]')
