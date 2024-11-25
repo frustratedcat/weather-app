@@ -89,8 +89,8 @@ def weather_result():
         print(f'{hourly_list_time.text} | Temperature: {hourly_list_temp.text} | Precipitation: {hourly_list_precip.text}')
 
     # Print 10-day
-    print('\n10-Day Forecast')
-    for i in range(1, 11):
+    print('\nNext 9 Days')
+    for i in range(2, 11):
         _10_day_day_of_week = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[1]')
         _10_day_date = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[2]')
         _10_day_high = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[2]/div/span[1]')
