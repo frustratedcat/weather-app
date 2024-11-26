@@ -27,8 +27,34 @@ def get_element(time, type, name):
 
 # Get location for search
 def get_user_location():
-    location = input('Type your address here:\n> ')
-    return location.strip()
+    # Check if file exists
+    if os.path.isfile('saved_location.txt'):
+
+        # If file exists, open and check if empty
+        with open('saved_location.txt') as saved_location:
+            test = str(saved_location.read())
+            if len(test) != 0:
+
+                # If not empty, ask if user wants to use saved location
+                use_saved_location = input('Would you like to use your prior location search? (Type "Yes" or "No")\n> ')
+
+                # If yes, return location 
+                if (use_saved_location.lower().startswith('y')):
+                    location = test
+                    return location.strip()
+                # Else, ask for input
+                else:
+                    clear_screen()
+                    with open('saved_location.txt', 'w') as saved_location:
+                        location = input('Type your address here:\n> ')
+                        saved_location.write(location)
+                        return location.strip()
+
+    else:
+        with open('saved_location.txt', 'w') as saved_location:
+            location = input('Type your address here:\n> ')
+            saved_location.write(location)
+            return location.strip()
 
 # Search location and return list of locations or result
 def search_user_location():
