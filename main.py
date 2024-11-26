@@ -32,15 +32,15 @@ def get_user_location():
 
         # If file exists, open and check if empty
         with open('saved_location.txt') as saved_location:
-            test = str(saved_location.read())
-            if len(test) != 0:
+            saved_string = str(saved_location.read())
+            if len(saved_string) != 0:
 
                 # If not empty, ask if user wants to use saved location
                 use_saved_location = input('Would you like to use your prior location search? (Type "Yes" or "No")\n> ')
 
                 # If yes, return location 
                 if (use_saved_location.lower().startswith('y')):
-                    location = test
+                    location = saved_string
                     return location.strip()
                 # Else, ask for input
                 else:
