@@ -36,19 +36,22 @@ def get_user_location():
             if len(saved_string) != 0:
 
                 # If not empty, ask if user wants to use saved location
-                use_saved_location = input('Would you like to use your prior location search? (Type "Yes" or "No")\n> ')
+                use_saved_location = input(f'Would you like to use your prior location search?\n--------------------------------------------------\n{saved_string}\n--------------------------------------------------\n(Type "Yes" or "No")\n> ')
 
-                # If yes, return location 
-                if (use_saved_location.lower().startswith('y')):
-                    location = saved_string
-                    return location.strip()
-                # Else, ask for input
-                else:
-                    clear_screen()
-                    with open('saved_location.txt', 'w') as saved_location:
-                        location = input('Type your address here:\n> ')
-                        saved_location.write(location)
+                try:
+                    # If yes, return location 
+                    if use_saved_location.lower() == 'yes':
+                        location = saved_string
                         return location.strip()
+                    # Else, ask for input
+                    elif use_saved_location.lower() == 'no':
+                        clear_screen()
+                        with open('saved_location.txt', 'w') as saved_location:
+                            location = input('Type your address here:\n> ')
+                            saved_location.write(location)
+                            return location.strip()
+                except ValueError:
+                    print('You were supposed to type "yes" or "no"...')
 
     else:
         with open('saved_location.txt', 'w') as saved_location:
