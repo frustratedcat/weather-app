@@ -65,6 +65,7 @@ def search_user_location():
 
 # Current weather result
 def weather_result():
+    clear_screen()
     # Print locaiton, date, time
     location =  get_element(5, By.CLASS_NAME, 'header-loc')
     current_date = get_element(5, By.XPATH, '//div[contains(@class, "card-header")]/p')
@@ -117,7 +118,7 @@ def weather_result():
         hourly_list_precip = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/div/span')
         print(f'{hourly_list_time.text} | Temperature: {hourly_list_temp.text} | Precipitation: {hourly_list_precip.text}')
 
-    # Print 10-day
+    # Print next 9 days
     print('\nNext 9 Days')
     for i in range(2, 11):
         _10_day_day_of_week = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[1]')
@@ -148,6 +149,7 @@ def weather_result():
 
 # List weather results
 def list_results():
+    clear_screen()
     print('Location Results:')
     result_len = driver.find_elements(By.XPATH, '//div[contains(@class, "locations-list")]/a')
     for i in range(1, len(result_len) + 1):
@@ -161,9 +163,9 @@ def main():
         clear_screen()
         search_user_location()
         clear_screen()
+        print('Retrieving data, please wait...')
         if driver.find_elements(By.CLASS_NAME, 'locations-list'):
             list_results()
-            clear_screen()
             weather_result()
         else:
             weather_result()
