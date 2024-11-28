@@ -111,7 +111,7 @@ def weather_result():
         print(f'Air Quality: {air_quality.text}')
 
     # Print hourly for the next 6 hours
-    print('\nNext 6 Hours')
+    print('\nNext 6 Hours\n------------')
     for i in range(1, 7):
         hourly_list_time = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[1]')
         hourly_list_temp = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[2]')
@@ -119,7 +119,7 @@ def weather_result():
         print(f'{hourly_list_time.text} | Temperature: {hourly_list_temp.text} | Precipitation: {hourly_list_precip.text}')
 
     # Print next 9 days
-    print('\nNext 9 Days')
+    print('\nNext 9 Days\n-----------')
     for i in range(2, 11):
         _10_day_day_of_week = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[1]')
         _10_day_date = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[2]')
@@ -131,7 +131,7 @@ def weather_result():
         print(f'{_10_day_day_of_week.text} - {_10_day_date.text} | High: {_10_day_high.text} | Low: {_10_day_low.text} | Day\'s Outlook: {_10_day_outlook_day.text} | Night\'s Outlook: {_10_day_outlook_night.text} | Precipitation: {_10_day_precip.text}')
 
     # Print sun and moon info
-    print('\nSun and Moon')
+    print('\nSun and Moon\n------------')
     sunrise = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][1]/div/div[1]/span[2]')
     sunset = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][1]/div/div[2]/span[2]')
     moonrise = get_element(5, By.XPATH, '//div[contains(@class, "sunrise-sunset__item")][2]/div/div[1]/span[2]')
@@ -139,7 +139,7 @@ def weather_result():
     print(f'Sunrise: {sunrise.text} | Sunset: {sunset.text}\nMoonrise: {moonrise.text} | Moonset: {moonset.text}')
 
     # Print allergy outlook
-    print('\nAllergy')
+    print('\nAllergy\n-------')
     tree_pollen = get_element(5, By.XPATH, '//a[contains(@class, "health-activities__item")][1]/span[2]')
     ragweed_pollen = get_element(5, By.XPATH, '//a[contains(@class, "health-activities__item")][2]/span[2]')
     mold = get_element(5, By.XPATH, '//a[contains(@class, "health-activities__item")][3]/span[2]')
