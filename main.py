@@ -111,8 +111,8 @@ def weather_result():
         print(f'Air Quality: {air_quality.text}')
 
     # Print hourly for the next 6 hours
-    print('\nNext 6 Hours\n------------')
-    for i in range(1, 7):
+    print('\nNext 5 Hours\n------------')
+    for i in range(1, 6):
         hourly_list_time = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[1]')
         hourly_list_temp = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/span[2]')
         hourly_list_precip = get_element(5, By.XPATH, '//div[contains(@class, "hourly-list__list-wrapper")]/div/a[' + str(i) + ']/div/span')
