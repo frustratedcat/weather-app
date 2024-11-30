@@ -121,14 +121,14 @@ def weather_result():
     # Print next 9 days
     print('\nNext 9 Days\n-----------')
     for i in range(2, 11):
-        _10_day_day_of_week = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[1]')
-        _10_day_date = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[2]')
-        _10_day_high = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[2]/div/span[1]')
-        _10_day_low = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[2]/div/span[2]')
-        _10_day_outlook_day = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[3]/p')
-        _10_day_outlook_night = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[3]/span/p')
-        _10_day_precip = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[4]')
-        print(f'{_10_day_day_of_week.text} - {_10_day_date.text} | High: {_10_day_high.text} | Low: {_10_day_low.text} | Day\'s Outlook: {_10_day_outlook_day.text} | Night\'s Outlook: {_10_day_outlook_night.text} | Precipitation: {_10_day_precip.text}')
+        _9_day_day_of_week = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[1]')
+        _9_day_date = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[1]/p[2]')
+        _9_day_high = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[2]/div/span[1]')
+        _9_day_low = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[2]/div/span[2]')
+        _9_day_outlook_day = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[3]/p')
+        _9_day_outlook_night = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[3]/span/p')
+        _9_day_precip = get_element(5, By.XPATH, '//a[contains(@class, "daily-list-item")][' + str(i) + ']/div[4]')
+        print(f'{_9_day_day_of_week.text} - {_9_day_date.text} | High: {_9_day_high.text} | Low: {_9_day_low.text} | Day\'s Outlook: {_9_day_outlook_day.text} | Night\'s Outlook: {_9_day_outlook_night.text} | Precipitation: {_9_day_precip.text}')
 
     # Print sun and moon info
     print('\nSun and Moon\n------------')
