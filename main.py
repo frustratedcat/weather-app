@@ -11,6 +11,8 @@ def clear_screen():
 # Connect to webdriver
 clear_screen()
 print('Starting Up. Please Wait...\n')
+
+# Do all the stuff
 options = webdriver.FirefoxOptions()
 options.add_argument('-headless')
 options.page_load_strategy = 'eager'
