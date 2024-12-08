@@ -3,6 +3,7 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+import ublock_xpi
 
 # Clear Screen
 def clear_screen():
@@ -20,7 +21,7 @@ driver = webdriver.Firefox(options=options)
 driver.get('https://www.accuweather.com/')
 
 # Add uBlock Origin addon
-driver.install_addon('uBlock0_1.61.3b5.firefox.signed.xpi')
+driver.install_addon(ublock_xpi.xpi)
 
 # Get HTML elements
 def get_element(time, type, name):

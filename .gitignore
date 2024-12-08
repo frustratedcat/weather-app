@@ -1,3 +1,5 @@
 saved_location.txt
 py*
 *.xpi
+__pycache__
+ublock_xpi.py
