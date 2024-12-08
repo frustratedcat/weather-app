@@ -13,7 +13,8 @@ To install the application:
     - Ex. `source py310/bin/activate`
 5. At this point, you need to install the requirements from the requirements.txt file with the following: 
     - `pip install -r requirements.txt`
-6. You should now be able to run the application without any problems.
+6. You will need to download the .xpi file of a version of uBlock Origin, and update the code accordingly for the version you download. Please see [Raymond Hill's Github](https://github.com/gorhill/uBlock/releases). Note that you may need to open it in a different browser than Firefox as Firefox wants to install it when you click the file rather than download it. 
+7. You should now be able to run the application without any problems.
 
 To deactivate the virtual environment, simply type `deactivate` in your terminal.
 
